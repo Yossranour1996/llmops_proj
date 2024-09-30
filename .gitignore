@@ -1,0 +1,15 @@
+# Ignore the virtual environment directory
+.venv/
+
+# Ignore environment variable files
+.env
+
+# Ignore Python bytecode
+__pycache__/
+
+# Ignore package build files
+build/
+dist/
+
+# Ignore egg info
+*.egg-info/
