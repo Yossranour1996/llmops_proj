@@ -43,7 +43,6 @@ load_dotenv()
 # os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
 # os.environ["LANGCHAIN_API_KEY"] = langsmith_api_key
 os.environ["OPENAI_API_KEY"] = os.environ.get("OPEN_AI_KEY")
-# OPENAI_API_KEY='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'
 
 # os.environ["ANTHROPIC_API_KEY"] = os.environ.get("ANTHROPIC_KEY")
 # os.environ["AUTOGEN_USE_DOCKER"] = "False"
