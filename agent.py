@@ -1,5 +1,5 @@
-# import os
-# from dotenv import load_dotenv
+import os
+from dotenv import load_dotenv
 # import streamlit as st
 from langchain_community.utilities import SQLDatabase
 from langchain_community.chat_models import ChatOllama
@@ -33,7 +33,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.runnables.history import RunnableWithMessageHistory
 
 
-# load_dotenv()
+load_dotenv()
 
 
 # langsmith_api_key = os.environ.get("LANGSMITH_API_KEY")
@@ -42,8 +42,8 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 # os.environ["LANGCHAIN_PROJECT"] = "Local SQL Agent"
 # os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
 # os.environ["LANGCHAIN_API_KEY"] = langsmith_api_key
-# os.environ["OPENAI_API_KEY"] = os.environ.get("OPEN_AI_KEY")
-OPENAI_API_KEY='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'
+os.environ["OPENAI_API_KEY"] = os.environ.get("OPEN_AI_KEY")
+# OPENAI_API_KEY='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'
 
 # os.environ["ANTHROPIC_API_KEY"] = os.environ.get("ANTHROPIC_KEY")
 # os.environ["AUTOGEN_USE_DOCKER"] = "False"
@@ -71,7 +71,7 @@ def getDatabase():
 #     return newllm
 
 def OpenAILLM():
-    llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0,openai_api_key=OPENAI_API_KEY)
+    llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
     return llm
 
 # def getAnthropicLLM():
@@ -468,93 +468,4 @@ with gr.Blocks() as demo:
     msg.submit(respond, [msg, chatbot, state], [msg, chatbot, state])
 
 demo.launch()
-
-# st.set_page_config(
-#     page_icon="",
-#     page_title="Chat with MYSQL DB",
-#     layout="centered"
-# )
-
-
-
-# question = st.chat_input('Chat with your mysql database') 
-
-# if "chat" not in st.session_state:
-#     st.session_state.chat = []
-
-# if question:
-#     if "db" not in st.session_state:
-#         st.error('Please connect database first.')
-#     else:
-#         st.session_state.chat.append({
-#             "role": "user",
-#             "content": question
-#         })
-
-#         # response_dict = agent_executor.invoke({"input": question})
-#         # sql_command = response_dict.get('sql_command', '')  # Extract SQL command
-#         # response_content = response_dict.get('output', '')  # Extract response content
-#         response_dict = agent_executor.invoke({"input": question})
-#         # Process the result assuming it is a dictionary with 'sql_command' and 'output'
-#         # if isinstance(result, dict):
-#         #     sql_command = result.get('sql_command', 'SQL command not found')
-#         #     output = result.get('output', 'No output returned')
-#         # else:
-#         #     sql_command = 'SQL command not found'
-#         #     output = 'No output returned'
-
-
-#         # response = f"**SQL Query:**\n```\n{sql_command}\n```\n\n**Explanation:**\n{output}"
-
-#         # Save both SQL command and the response
-#         st.session_state.chat.append({
-#             "role": "assistant",
-#             "content": response_dict
-#         })
-
-
-
-# for chat in st.session_state.chat:
-#     st.chat_message(chat['role']).markdown(chat['content'])
-
-# with st.sidebar:
-#     st.title('Connect to database')
-#     model_name = st.selectbox("Model Name", ["GPT-3.5", "Anthropic Claude 3.5", "Mistral 7B", "Llama 3.1"])
-
-#     # Dropdown for database type
-#     db_type = st.selectbox("Database Type", ["MySQL", "PostgreSQL", "SQLite", "Vertica"])
-
-#     # Connection string input with password visibility toggle
-#     connection_string = st.text_input(
-#         "Connection String",
-#         type="password",
-#         help="Enter your database connection string"
-#     )
-#     show_password = st.checkbox("Show Connection String")
-#     if show_password:
-#         st.write(connection_string)
-
-#     # Text box for documentation with info icon
-    
-#     documentation = st.text_area(
-#         "Documentation",
-#         help="Documentations are important for AI to give better SQL results."
-#     )
-#     st.caption("ℹ️ Documentations are important for AI to give better SQL results.")
-
-#     # Text box for SQL examples with info icon
-#     sql_examples = st.text_area(
-#         "SQL Examples",
-#         help="Examples help AI to improve the accuracy of SQL generation."
-#     )
-#     st.caption("ℹ️ Examples help AI to improve the accuracy of SQL generation.")
-#     connectBtn = st.button("Connect")
-
-
-#     if connectBtn:
-#         connectDatabase()
-#         st.success("Database connected")
-        
-        
-        
 
