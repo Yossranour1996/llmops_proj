@@ -468,5 +468,6 @@ with gr.Blocks() as demo:
 
     msg.submit(respond, [msg, chatbot, state], [msg, chatbot, state])
 
-demo.launch()
+demo.launch(server_name="0.0.0.0", server_port=7860)
+
 
