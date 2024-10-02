@@ -379,32 +379,6 @@ def JustAgentExecutor(llm, db,theprompt):
 
 
 
-# def get_session_history(session_id):
-#     last_k_messages = 4
-#     chat_message_history = SQLChatMessageHistory(
-#     session_id=session_id, connection = "sqlite:///memory.db", table_name = "local_table"
-#     )
-
-#     messages = chat_message_history.get_messages()
-#     chat_message_history.clear()
-    
-#     for message in messages[-last_k_messages:]:
-#         chat_message_history.add_message(message)
-    
-#     print("chat_message_history ", chat_message_history)
-#     return chat_message_history
-
-
-
-# def SQLagent(agent_executor):
-#     agent_with_chat_history = RunnableWithMessageHistory(
-#         agent_executor,
-#         get_session_history,
-#         input_messages_key="input",
-#         history_messages_key="chat_history",
-#     )
-#     return agent_with_chat_history
-
 selector=exampleSelector()
 fullprompt=fewshotsgpt(selector)
 # fulprompt= insertFewshots(selector)
