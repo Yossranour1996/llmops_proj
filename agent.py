@@ -52,16 +52,17 @@ os.environ["OPENAI_API_KEY"] = os.environ.get("OPEN_AI_KEY")
 
 def connectDatabase():
     global db
-    mysql_uri = f"mysql+mysqlconnector://root:admin@localhost:3306/classicmodels"
+    mysql_uri = f"mysql+mysqlconnector://root:admin@host.docker.internal:3306/classicmodels"
     db = SQLDatabase.from_uri(mysql_uri)
     
 
 def getDatabase():
-    mysql_uri = f"mysql+mysqlconnector://root:admin@localhost:3306/classicmodels"
+    mysql_uri = f"mysql+mysqlconnector://root:admin@host.docker.internal:3306/classicmodels"
     db = SQLDatabase.from_uri(mysql_uri)
     return db
+# 
 
-
+# mysql+mysqlconnector://root:admin@localhost:3306/classicmodels
 # def getLLM():
 #     llm = ChatOllama(model="llama3.1:8b-instruct-q4_0", timeout=1200) 
 #     return llm
